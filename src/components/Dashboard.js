@@ -17,14 +17,15 @@ const useStyles = makeStyles({
       transform: 'scale(0.8)',
     },
     title: {
-      fontSize: 14,
+      fontSize: 20,
+      fontWeight: 800
     },
     pos: {
       marginBottom: 12,
-    },
+    }
   });
   
-function OutlinedCard() {
+function OutlinedCard(props) {
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
   
@@ -32,18 +33,10 @@ function OutlinedCard() {
       <Card className={classes.root} variant="outlined">
         <CardContent>
           <Typography className={classes.title} color="textSecondary" gutterBottom>
-            Word of the Day
-          </Typography>
-          <Typography variant="h5" component="h2">
-            be{bull}nev{bull}o{bull}lent
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            adjective
+            {props.title}
           </Typography>
           <Typography variant="body2" component="p">
-            well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
+            {props.description}
           </Typography>
         </CardContent>
         <CardActions>
@@ -57,8 +50,10 @@ class Dashboard extends Component {
 
     render() {
         return(
-            <div>
-                <OutlinedCard />
+            <div class="cards" style={{display: "flex", justifyContent: "space-evenly", maxWidth: "1200px", margin: "0 auto", padding: "60px"}}>
+                <OutlinedCard title="Online Mode" description="Is this application connected to the internet?"/>
+                <OutlinedCard title="Master Volume" description="Overvides all other sound settings in this application"/>
+                <OutlinedCard title="Sound Quality" description="Manually control the music quality in event of poor connection"/>
             </div>
         )
 
