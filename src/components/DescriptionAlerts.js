@@ -3,13 +3,13 @@ import Alert  from '@material-ui/lab/Alert';
 import AlertTitle from '@material-ui/lab/AlertTitle';
 
 
-export default function DescriptionAlerts({infoType}) {
+export default function DescriptionAlerts({alertType}) {
   
   return (
     <div>
-      <Alert severity={infoType.severity}>
-        <AlertTitle>{infoType.title}</AlertTitle>
-        {infoType.text}
+      <Alert severity={alertType.severity}>
+        <AlertTitle>{alertType.title}</AlertTitle>
+        {alertType.text}
       </Alert>    </div>
   );
 }

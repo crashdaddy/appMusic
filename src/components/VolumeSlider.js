@@ -11,6 +11,8 @@ class VolumeSlider extends Component {
   this.props.changeVolume(value);
 }
 
+
+
 render() {
   return (
     <div>

@@ -26,7 +26,7 @@ class App extends Component {
 
     this.state = { 
       showInfo: false,
-      infoType: '',
+      alerts: [],
       volume: 20,
       loggedIn: false, 
       online: true,
@@ -47,8 +47,9 @@ class App extends Component {
     })
     if (!onOrOff) {
       this.setState({
-        infoType: 2
+        alerts: [...this.state.alerts, 2]
       })
+    
     }
   }
 
@@ -57,18 +58,29 @@ class App extends Component {
     this.setState({
       quality: newQuality
     })
+    if (newQuality === 1) {
+      this.setState({
+        alerts: [...this.state.alerts, 1]
+      })
   }
+}
 
   changeVolume=(newVolume) => {
     this.setState({
       volume: newVolume
     })
+    if (newVolume > 80) {
+      this.setState({
+        alerts: [...this.state.alerts, 0]
+      })
+    }
   }
 
   render() {
   return (
     <div>
-      {!this.state.online && this.state.infoType && <DescriptionAlert infoType={alertType[this.state.infoType]} />}
+
+      {this.state.alerts.map((alert, index) => (<DescriptionAlert key={index} alertType={alertType[alert]} />))}
       <NavBar login={this.login}  />
       {this.state.loggedIn ? <Dashboard volume={this.state.volume} changeVolume={this.changeVolume} setQuality={this.setQuality} quality={this.state.quality} online={this.state.online} setOnline={this.setOnline}/> : (
         <div>Login</div>
