@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Dashboard from './components/Dashboard';
 import NavBar from './components/NavBar';
-import OnlineSwitch from './components/OnlineSwitch';
 
 
 class App extends Component {
@@ -10,6 +9,7 @@ class App extends Component {
     super(props);
 
     this.state = { 
+      volume: 20,
       loggedIn: false, 
       online: false,
     };
@@ -21,11 +21,18 @@ class App extends Component {
     })
   }
 
+  changeVolume=(newVolume) => {
+    this.setState({
+      volume: newVolume
+    })
+    console.log(newVolume);
+  }
+
   render() {
   return (
     <div>
       <NavBar login={this.login} online={this.state.online} />
-      {this.state.loggedIn ? <Dashboard /> : (
+      {this.state.loggedIn ? <Dashboard volume={this.state.volume} changeVolume={this.changeVolume} /> : (
         <div>Login</div>
      )}
     </div>

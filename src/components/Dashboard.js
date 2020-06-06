@@ -1,48 +1,29 @@
 import React, {Component} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import OnlineSwitch from './OnlineSwitch';
+import VolumeSlider from './VolumeSlider'
 
-const useStyles = makeStyles({
-    root: {
-      minWidth: 275,
-      maxWidth:350,
-    },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
-    title: {
-      fontSize: 20,
-      fontWeight: 800
-    },
-    pos: {
-      marginBottom: 12,
-    }
-  });
   
-function OutlinedCard(props) {
-    const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
-  
+class OutlinedCard extends Component {
+
+  render() {
     return (
-      <Card className={classes.root} variant="outlined">
+      <Card>
         <CardContent>
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
-            {props.title}
+          <Typography gutterBottom>
+            {this.props.title}
           </Typography>
           <Typography variant="body2" component="p">
-            {props.description}
+            {this.props.description}
           </Typography>
-        {props.displayControl==="OnlineSwitch" ? <OnlineSwitch/> : ""}
+        {this.props.displayControl==="OnlineSwitch" ? <OnlineSwitch/> : ""}
+        {this.props.displayControl==="VolumeSlider" ? <VolumeSlider changeVolume={this.props.changeVolume}/> : ""}
         </CardContent>
       </Card>
     );
+  }
   }
 
 class Dashboard extends Component {
@@ -51,7 +32,7 @@ class Dashboard extends Component {
         return(
             <div class="cards" style={{display: "flex", justifyContent: "space-evenly", maxWidth: "1200px", margin: "0 auto", padding: "60px"}}>
                 <OutlinedCard displayControl="OnlineSwitch" title="Online Mode" description="Is this application connected to the internet?"/>
-                <OutlinedCard title="Master Volume" description="Overvides all other sound settings in this application"/>
+                <OutlinedCard displayControl="VolumeSlider" title="Master Volume" description="Overvides all other sound settings in this application" changeVolume={this.props.changeVolume}/>
                 <OutlinedCard title="Sound Quality" description="Manually control the music quality in event of poor connection"/>
             </div>
         )
