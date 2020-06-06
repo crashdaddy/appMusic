@@ -50,7 +50,7 @@ class App extends Component {
         alerts: [...this.state.alerts, 2]
       })
     
-    }
+    } else this.clearAlert(2);
   }
 
   
@@ -62,6 +62,8 @@ class App extends Component {
       this.setState({
         alerts: [...this.state.alerts, 1]
       })
+  } else {
+    this.clearAlert(1);
   }
 }
 
@@ -73,8 +75,21 @@ class App extends Component {
       this.setState({
         alerts: [...this.state.alerts, 0]
       })
-    }
+    } else this.clearAlert(0);
   }
+
+  
+  clearAlert = (alertNumber) => {
+      let tempArray = this.state.alerts;
+      
+      while (tempArray.indexOf(alertNumber)!==-1) {
+        tempArray.splice(tempArray.indexOf(alertNumber),1);
+      }
+      this.setState({
+        alerts: tempArray
+      })
+    }
+
 
   render() {
   return (
