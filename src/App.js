@@ -12,6 +12,7 @@ class App extends Component {
       volume: 20,
       loggedIn: false, 
       online: false,
+      quality: 2
     };
   }
 
@@ -21,18 +22,24 @@ class App extends Component {
     })
   }
 
+  setQuality = (newQuality) => {
+    this.setState({
+      quality: newQuality
+    })
+    console.log(newQuality)
+  }
+
   changeVolume=(newVolume) => {
     this.setState({
       volume: newVolume
     })
-    console.log(newVolume);
   }
 
   render() {
   return (
     <div>
       <NavBar login={this.login} online={this.state.online} />
-      {this.state.loggedIn ? <Dashboard volume={this.state.volume} changeVolume={this.changeVolume} /> : (
+      {this.state.loggedIn ? <Dashboard volume={this.state.volume} changeVolume={this.changeVolume} setQuality={this.setQuality} quality={this.state.quality}/> : (
         <div>Login</div>
      )}
     </div>

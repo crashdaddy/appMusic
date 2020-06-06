@@ -4,6 +4,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import OnlineSwitch from './OnlineSwitch';
 import VolumeSlider from './VolumeSlider'
+import QualitySelector from './QualitySelector'
 
   
 class OutlinedCard extends Component {
@@ -20,6 +21,7 @@ class OutlinedCard extends Component {
           </Typography>
         {this.props.displayControl==="OnlineSwitch" ? <OnlineSwitch/> : ""}
         {this.props.displayControl==="VolumeSlider" ? <VolumeSlider changeVolume={this.props.changeVolume}/> : ""}
+        {this.props.displayControl==="QualitySelector" ? <QualitySelector setQuality={this.props.setQuality} quality={this.props.quality}/> : ""}
         </CardContent>
       </Card>
     );
@@ -33,7 +35,7 @@ class Dashboard extends Component {
             <div style={{display: "flex", justifyContent: "space-evenly", maxWidth: "1200px", margin: "0 auto", padding: "60px"}}>
                 <OutlinedCard displayControl="OnlineSwitch" title="Online Mode" description="Is this application connected to the internet?"/>
                 <OutlinedCard displayControl="VolumeSlider" title="Master Volume" description="Overvides all other sound settings in this application" changeVolume={this.props.changeVolume}/>
-                <OutlinedCard title="Sound Quality" description="Manually control the music quality in event of poor connection"/>
+                <OutlinedCard displayControl="QualitySelector" title="Sound Quality" description="Manually control the music quality in event of poor connection" setQuality={this.props.setQuality} quality={this.props.quality}/>
             </div>
         )
 
