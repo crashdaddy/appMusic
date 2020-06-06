@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import OnlineSwitch from './OnlineSwitch';
 
 const useStyles = makeStyles({
     root: {
@@ -38,10 +39,8 @@ function OutlinedCard(props) {
           <Typography variant="body2" component="p">
             {props.description}
           </Typography>
+        {props.displayControl==="OnlineSwitch" ? <OnlineSwitch/> : ""}
         </CardContent>
-        <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions>
       </Card>
     );
   }
@@ -51,7 +50,7 @@ class Dashboard extends Component {
     render() {
         return(
             <div class="cards" style={{display: "flex", justifyContent: "space-evenly", maxWidth: "1200px", margin: "0 auto", padding: "60px"}}>
-                <OutlinedCard title="Online Mode" description="Is this application connected to the internet?"/>
+                <OutlinedCard displayControl="OnlineSwitch" title="Online Mode" description="Is this application connected to the internet?"/>
                 <OutlinedCard title="Master Volume" description="Overvides all other sound settings in this application"/>
                 <OutlinedCard title="Sound Quality" description="Manually control the music quality in event of poor connection"/>
             </div>
