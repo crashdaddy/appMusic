@@ -30,7 +30,7 @@ class Dashboard extends Component {
 
     render() {
         return(
-            <div class="cards" style={{display: "flex", justifyContent: "space-evenly", maxWidth: "1200px", margin: "0 auto", padding: "60px"}}>
+            <div style={{display: "flex", justifyContent: "space-evenly", maxWidth: "1200px", margin: "0 auto", padding: "60px"}}>
                 <OutlinedCard displayControl="OnlineSwitch" title="Online Mode" description="Is this application connected to the internet?"/>
                 <OutlinedCard displayControl="VolumeSlider" title="Master Volume" description="Overvides all other sound settings in this application" changeVolume={this.props.changeVolume}/>
                 <OutlinedCard title="Sound Quality" description="Manually control the music quality in event of poor connection"/>
