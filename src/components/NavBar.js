@@ -4,7 +4,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 // import MenuIcon from '@material-ui/core/MenuIcon';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 
 class NavBar extends Component {
 
@@ -16,9 +15,8 @@ class NavBar extends Component {
                 {/* <MenuIcon /> */}
               </IconButton>
               <Typography variant="h6" className="">
-                News
+                App Music
               </Typography>
-              <Button color="inherit" onClick={this.props.login}>Login</Button>
             </Toolbar>
           </AppBar>
 

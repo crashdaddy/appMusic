@@ -15,7 +15,7 @@ class VolumeSlider extends Component {
 
 render() {
   return (
-    <div>
+    <div style={{width:'100%'}}>
       <Slider
         value={this.props.volume}
         defaultValue={20}
